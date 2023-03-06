@@ -40,7 +40,7 @@
         android:layout_alignParentBottom="true"
         android:text="Log in"
         android:textColor="@color/black"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/register_button"

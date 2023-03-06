@@ -13,9 +13,13 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.example.cameraxapp.CameraXAppKt;
+
 public class MainActivity extends AppCompatActivity {
 
-    private Button mLoginButton;
+
+
+   private Button mLoginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +30,23 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, new LoginFragment())
                 .commit();
+
+//        Working on it
+//        mLoginButton = findViewById(R.id.login_button);
+//        mLoginButton.setOnClickListenr(new View.OnClickListener(){
+//
+//            public void onClick(View v){
+//
+//                startActivity(new Intent(MainActivity.this, CameraXAppKt.class));
+//
+//            }
+//
+//        });
     }
+
+
+
+
 }
 
 

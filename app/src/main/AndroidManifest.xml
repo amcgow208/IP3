@@ -28,7 +28,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
+        <activity android:name="com.android.example.cameraxapp.CameraXApp"
+            android:exported="true">
 
+        </activity>
     </application>
 
 
