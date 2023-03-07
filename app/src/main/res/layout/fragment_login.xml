@@ -37,16 +37,24 @@
         android:id="@+id/login_button"
         android:layout_width="match_parent"
         android:layout_height="64dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="16dp"
         android:layout_alignParentBottom="true"
         android:text="Log in"
         android:textColor="@color/black"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:background="@drawable/button_background"/>
 
     <Button
         android:id="@+id/register_button"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_above="@id/login_button"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_background"
         android:text="Register"
         android:textColor="@color/black"
         android:textSize="18sp" />

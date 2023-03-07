@@ -1,26 +1,25 @@
 package org.me.gcu.ip3;
 
 import android.os.Bundle;
-
+import android.view.View;
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import org.me.gcu.ip3.LoginFragment;
-import org.me.gcu.ip3.RegistrationFragment;
 
-public class MainActivity extends AppCompatActivity {
+
+public class RegistrationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_registration);
 
-        // Load the LoginFragment by default
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        LoginFragment loginFragment = new LoginFragment();
-        fragmentTransaction.add(R.id.fragment_container, loginFragment);
+
+        RegistrationFragment registrationFragment = new RegistrationFragment();
+        fragmentTransaction.add(R.id.registration_container, registrationFragment);
         fragmentTransaction.commit();
     }
 }
-
