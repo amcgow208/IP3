@@ -36,14 +36,22 @@ class CameraFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         viewBinding = FragmentCameraBinding.inflate(inflater, container, false)
         return viewBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        if (allPermissionsGranted()) {
+            startCamera()
+        } else {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                REQUIRED_PERMISSIONS,
+                REQUEST_CODE_PERMISSIONS
+            )
+        }
 
         cameraExecutor = Executors.newSingleThreadExecutor()
 
@@ -55,15 +63,7 @@ class CameraFragment : Fragment() {
         }
 
 
-        if (allPermissionsGranted()) {
-            startCamera()
-        } else {
-            ActivityCompat.requestPermissions(
-                requireActivity(),
-                REQUIRED_PERMISSIONS,
-                REQUEST_CODE_PERMISSIONS
-            )
-        }
+
     }
 
     private fun takePhoto() {
@@ -97,13 +97,13 @@ class CameraFragment : Fragment() {
             ContextCompat.getMainExecutor(requireContext()),
             object : ImageCapture.OnImageSavedCallback {
                 override fun onError(exc: ImageCaptureException) {
-                    Log.e(CameraActivity.TAG, "Photo capture failed: ${exc.message}", exc)
+                    Log.e(TAG, "Photo capture failed: ${exc.message}", exc)
                 }
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val msg = "Photo capture succeeded: ${output.savedUri}"
                     Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
-                    Log.d(CameraActivity.TAG, msg)
+                    Log.d(TAG, msg)
                 }
             }
         )
@@ -125,7 +125,6 @@ class CameraFragment : Fragment() {
                     it.setSurfaceProvider(viewBinding.viewFinder.surfaceProvider)
                 }
             imageCapture = ImageCapture.Builder().build()
-
             // Select back camera as a default
             val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 

@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 class CameraActivity : AppCompatActivity() {
 
-    // Create a new instance of your CameraXFragment
+    // Create a new instance of your CameraFragment
     private val cameraFragment = CameraFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
