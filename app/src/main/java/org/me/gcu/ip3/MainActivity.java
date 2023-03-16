@@ -3,6 +3,7 @@ package org.me.gcu.ip3;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import org.me.gcu.ip3.LoginFragment;
@@ -16,11 +17,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Load the LoginFragment by default
+        loadFragment(new LoginFragment());
+    }
+
+    public void loadFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        LoginFragment loginFragment = new LoginFragment();
-        fragmentTransaction.add(R.id.fragment_container, loginFragment);
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 }
+
 

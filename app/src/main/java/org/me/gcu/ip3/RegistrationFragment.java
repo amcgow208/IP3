@@ -25,7 +25,7 @@ public class RegistrationFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Navigate back to LoginActivity
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
             }
         });
