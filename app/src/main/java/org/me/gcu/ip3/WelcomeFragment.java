@@ -30,6 +30,8 @@ public class WelcomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button cameraButton = view.findViewById(R.id.camera_button);
+        Button pantryButton = view.findViewById(R.id.pantry_button);
+        Button recipesButton = view.findViewById(R.id.recipes_button);
 
         cameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +40,30 @@ public class WelcomeFragment extends Fragment {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 CameraFragment cameraFragment = new CameraFragment();
                 fragmentTransaction.replace(R.id.fragment_container, cameraFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+
+        pantryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getParentFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                PantryFragment pantryFragment = new PantryFragment();
+                fragmentTransaction.replace(R.id.fragment_container, pantryFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+
+        recipesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getParentFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                RecipesFragment recipesFragment = new RecipesFragment();
+                fragmentTransaction.replace(R.id.fragment_container, recipesFragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }

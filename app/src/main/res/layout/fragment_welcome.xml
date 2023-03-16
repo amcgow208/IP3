@@ -12,22 +12,37 @@
         android:textColor="@color/black"
         android:textSize="18sp"
         android:background="@drawable/button_background" />
-    <Button
-        android:id="@+id/pantry_button"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="wrap_content"
         android:layout_above="@id/camera_button"
-        android:text="Pantry"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:background="@drawable/button_background" />
-    <Button
-        android:id="@+id/recipes_button"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layout_above="@id/pantry_button"
-        android:text="Recipes"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:background="@drawable/button_background" />
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/recipes_button"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_weight="0.4"
+            android:layout_marginRight="8dp"
+            android:text="Recipes"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:background="@drawable/button_background" />
+
+        <Button
+            android:id="@+id/pantry_button"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_weight="0.4"
+            android:layout_marginLeft="8dp"
+            android:text="Pantry"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:background="@drawable/button_background" />
+
+    </LinearLayout>
+
 </RelativeLayout>
