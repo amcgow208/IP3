@@ -13,5 +13,22 @@
         android:textColor="@color/black"
         android:textSize="18sp"
         android:background="@drawable/button_background" />
-
+    <Button
+        android:id="@+id/pantry_button"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_above="@id/camera_button"
+        android:text="Pantry"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:background="@drawable/button_background" />
+    <Button
+        android:id="@+id/recipes_button"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_above="@id/pantry_button"
+        android:text="Recipes"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:background="@drawable/button_background" />
 </RelativeLayout>
