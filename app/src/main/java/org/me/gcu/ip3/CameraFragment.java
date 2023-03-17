@@ -31,7 +31,7 @@ import androidx.lifecycle.LifecycleOwner;
 
 import com.google.common.util.concurrent.ListenableFuture;
 
-import org.me.gcu.ip3.databinding.ActivityMainBinding;
+
 
 import java.io.File;
 import java.util.ArrayList;
