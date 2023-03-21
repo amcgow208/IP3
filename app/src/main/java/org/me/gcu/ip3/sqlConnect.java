@@ -2,7 +2,7 @@ package org.me.gcu.ip3;
 import android.database.sqlite.SQLiteDatabase;
 
 
-public class sqlConnect {
+public class sqlConnect{
 
     private int id;
     private String firname, surname, username, email, password;
@@ -10,7 +10,7 @@ public class sqlConnect {
     //constructor
 
 
-    public sqlConnect(int id, String firname, String surname, String username, String email, String password) {
+    public sqlConnect(int id, String firname, String surname, String username, String password, String email) {
         this.id = id;
         this.firname = firname;
         this.surname = surname;
