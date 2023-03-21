@@ -44,13 +44,16 @@ public class RegistrationFragment extends Fragment {
                    sql = new sqlConnect(-1, et_firname.getText().toString(), et_surname.getText().toString(), et_usrnme.getText().toString(), et_pswrd.getText().toString(), et_email.getText().toString());
                    //Toast.makeText(getActivity(), sql.toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e){
-                    //Toast.makeText(getActivity(), "Error Creating User", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Error Creating User", Toast.LENGTH_SHORT).show();
                     sql = new sqlConnect(-1, "error", "error", "error", "error", "error");
                 }
 
-                dbHelper dbHelper = new dbHelper(getActivity());
-                boolean result = dbHelper.addOne(sql);
-                Toast.makeText(getActivity(), "success = " + result, Toast.LENGTH_SHORT).show();
+                dbHelper dbH = new dbHelper(getActivity());
+                boolean result = dbH.addOne(sql);
+                if(!result){
+                    Toast.makeText(getActivity(), "Error Creating User", Toast.LENGTH_SHORT).show();
+                };
+                //Toast.makeText(getActivity(), "Registration = " + result, Toast.LENGTH_SHORT).show();
             }
         });
 

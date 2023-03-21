@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -24,7 +25,7 @@ public class dbHelper extends SQLiteOpenHelper {
     //Called first time db is called, this method creates a new db
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableStatement = "CREATE TABLE " + USR_TBL + " (" + ID_FIELD + " INTEGER PRIMARY KEY AUTOINCREMENT, " + FNAME_FIELD + " TEXT, " + SNAME_FIELD + " TEXT, " + USRNME_FIELD + " TEXT, " + PSWRD_FIELD + " TEXT, " + EMAIL_FIELD + " TEXT)";
+        String createTableStatement = "CREATE TABLE " + USR_TBL + " (" + ID_FIELD + " INTEGER PRIMARY KEY AUTOINCREMENT, " + FNAME_FIELD + " TEXT, " + SNAME_FIELD + " TEXT, " + USRNME_FIELD + " TEXT UNIQUE, " + PSWRD_FIELD + " TEXT, " + EMAIL_FIELD + " TEXT)";
 
         db.execSQL(createTableStatement);
     }
@@ -46,7 +47,7 @@ public class dbHelper extends SQLiteOpenHelper {
         cv.put(EMAIL_FIELD, sqlConnect.getEmail());
 
         long insert = db.insert(USR_TBL, null, cv);
-
+        Log.d("insert value", "value = "+insert);
         if(insert == -1){
             return false;
         } else {
