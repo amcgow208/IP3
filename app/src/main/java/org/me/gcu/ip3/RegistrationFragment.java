@@ -2,6 +2,7 @@ package org.me.gcu.ip3;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,8 +45,7 @@ public class RegistrationFragment extends Fragment {
                    sql = new sqlConnect(-1, et_firname.getText().toString(), et_surname.getText().toString(), et_usrnme.getText().toString(), et_pswrd.getText().toString(), et_email.getText().toString());
                    //Toast.makeText(getActivity(), sql.toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e){
-                    Toast.makeText(getActivity(), "Error Creating User", Toast.LENGTH_SHORT).show();
-                    sql = new sqlConnect(-1, "error", "error", "error", "error", "error");
+                    sql = new sqlConnect(-1, null, null, null, null, null);
                 }
 
                 dbHelper dbH = new dbHelper(getActivity());
