@@ -2,6 +2,7 @@ package org.me.gcu.ip3;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RegistrationFragment extends Fragment {
 
@@ -35,26 +39,35 @@ public class RegistrationFragment extends Fragment {
         et_email = view.findViewById(R.id.email_address);
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
 
                 sqlConnect sql;
+                dbHelper dbH = new dbHelper(getActivity());
+                List<sqlConnect> returnList = dbH.checkUsrnme();
 
-                try{
-                   sql = new sqlConnect(-1, et_firname.getText().toString(), et_surname.getText().toString(), et_usrnme.getText().toString(), et_pswrd.getText().toString(), et_email.getText().toString());
-                   //Toast.makeText(getActivity(), sql.toString(), Toast.LENGTH_SHORT).show();
-                } catch (Exception e){
-                    Toast.makeText(getActivity(), "Error Creating User", Toast.LENGTH_SHORT).show();
-                    sql = new sqlConnect(-1, "error", "error", "error", "error", "error");
+                //Checks that fields are empty
+                if (et_firname.getText().toString().isEmpty() || et_surname.getText().toString().isEmpty() || et_usrnme.getText().toString().isEmpty() || et_pswrd.getText().toString().isEmpty() || et_email.getText().toString().isEmpty()) {
+                    Toast.makeText(getActivity(), "Field(s) Null", Toast.LENGTH_SHORT).show();
+                    return;
                 }
 
-                dbHelper dbH = new dbHelper(getActivity());
-                boolean result = dbH.addOne(sql);
-                if(!result){
-                    Toast.makeText(getActivity(), "Error Creating User", Toast.LENGTH_SHORT).show();
-                };
-                //Toast.makeText(getActivity(), "Registration = " + result, Toast.LENGTH_SHORT).show();
+                sql = new sqlConnect(-1, et_firname.getText().toString(), et_surname.getText().toString(), et_usrnme.getText().toString(), et_pswrd.getText().toString(), et_email.getText().toString());
+
+                try {
+                    if(returnList.toString().contains(sql.getUsername())){
+                        Toast.makeText(getActivity(), "Username " + et_usrnme.getText() + " Already Exists", Toast.LENGTH_SHORT).show();
+                    } else {
+                        dbH.addOne(sql);
+                        Toast.makeText(getActivity(), sql.getUsername() + " Succesfully Created!", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e){
+                    Log.d("Error Occured = ", ""+e);
+                }
+
             }
+
         });
 
         backButton.setOnClickListener(new View.OnClickListener() {

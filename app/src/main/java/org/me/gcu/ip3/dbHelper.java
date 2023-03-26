@@ -2,11 +2,17 @@ package org.me.gcu.ip3;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class dbHelper extends SQLiteOpenHelper {
 
@@ -40,18 +46,51 @@ public class dbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
+
         cv.put(FNAME_FIELD, sqlConnect.getFirname());
         cv.put(SNAME_FIELD, sqlConnect.getSurname());
         cv.put(USRNME_FIELD, sqlConnect.getUsername());
         cv.put(PSWRD_FIELD, sqlConnect.getPassword());
         cv.put(EMAIL_FIELD, sqlConnect.getEmail());
 
+
+
         long insert = db.insert(USR_TBL, null, cv);
         Log.d("insert value", "value = "+insert);
-        if(insert == -1){
+        if(insert == -1){db.close();
             return false;
         } else {
+            db.close();
             return true;
         }
+
+    }
+
+    public List<sqlConnect> checkUsrnme(){
+
+        List<sqlConnect> returnList = new ArrayList<>();
+        String queryString = "SELECT * FROM " + USR_TBL;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()){
+            //loop through results
+            do {
+                int usrID = cursor.getInt(0);
+                String fname =cursor.getString(1);
+                String sname = cursor.getString(2);
+                String usrName = cursor.getString(3);
+                String email = cursor.getString(5);
+
+                sqlConnect sql = new sqlConnect(usrID, fname, sname, usrName, "null", email);
+                returnList.add(sql);
+
+            } while (cursor.moveToNext());
+        } else { }
+        cursor.close();
+        db.close();
+        return returnList;
     }
 }
