@@ -1,17 +1,13 @@
 package org.me.gcu.ip3;
 
-import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 
 public class LoginFragment extends Fragment {
     private EditText mUsernameEditText;
@@ -44,10 +40,9 @@ public class LoginFragment extends Fragment {
 
                 // TODO: Check user's credentials
 
-                // If the login is successful, display a toast message and navigate to the WelcomeActivity
+                // If the login is successful, display a toast message and navigate to the WelcomeFragment
                 Toast.makeText(getActivity(), "Login successful!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), WelcomeActivity.class);
-                startActivity(intent);
+                ((MainActivity) getActivity()).loadFragment(new WelcomeFragment());
             }
         });
 
@@ -55,8 +50,7 @@ public class LoginFragment extends Fragment {
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RegistrationActivity.class);
-                startActivity(intent);
+                ((MainActivity) getActivity()).loadFragment(new RegistrationFragment());
             }
         });
 
