@@ -159,4 +159,11 @@
     <color name="MediumBlue">#0000CD</color>
     <color name="DarkBlue">#00008B</color>
     <color name="Navy">#000080</color>
+    <!-- custom colours -->
+    <color name="buttonColor">#FCD434</color>
+    <color name="textColor">#1F2630</color>
+    <color name="editTextBackground">#363D47</color>
+    <color name="placeholderText">#868B91</color>
+    <color name="inputText">#F4F4F4</color>
+    <color name="appBackground">#202733</color>
 </resources>
