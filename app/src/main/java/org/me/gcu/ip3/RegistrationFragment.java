@@ -3,6 +3,7 @@ package org.me.gcu.ip3;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +20,9 @@ import java.util.List;
 
 public class RegistrationFragment extends Fragment {
 
-    private Button backButton;
-    Button btnSignUp;
-    EditText et_firname, et_surname, et_usrnme, et_pswrd, et_email;
+
+    Button btnSignUp, backButton;
+    EditText firstName, surname, username, password, email;
 
 
     @Nullable
@@ -32,11 +33,11 @@ public class RegistrationFragment extends Fragment {
         //component variables
         backButton = view.findViewById(R.id.back_button);
         btnSignUp = view.findViewById(R.id.sign_up);
-        et_firname = view.findViewById(R.id.first_name);
-        et_surname = view.findViewById(R.id.surname_name);
-        et_usrnme = view.findViewById(R.id.username);
-        et_pswrd = view.findViewById(R.id.password);
-        et_email = view.findViewById(R.id.email_address);
+        firstName = view.findViewById(R.id.first_name);
+        surname = view.findViewById(R.id.surname_name);
+        username = view.findViewById(R.id.username);
+        password = view.findViewById(R.id.password);
+        email = view.findViewById(R.id.email_address);
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
 
@@ -48,19 +49,23 @@ public class RegistrationFragment extends Fragment {
                 List<sqlConnect> returnList = dbH.checkUsrnme();
 
                 //Checks that fields are empty
-                if (et_firname.getText().toString().isEmpty() || et_surname.getText().toString().isEmpty() || et_usrnme.getText().toString().isEmpty() || et_pswrd.getText().toString().isEmpty() || et_email.getText().toString().isEmpty()) {
+                if (firstName.getText().toString().isEmpty() || surname.getText().toString().isEmpty() || username.getText().toString().isEmpty() || password.getText().toString().isEmpty() || email.getText().toString().isEmpty()) {
                     Toast.makeText(getActivity(), "Field(s) Null", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-                sql = new sqlConnect(-1, et_firname.getText().toString(), et_surname.getText().toString(), et_usrnme.getText().toString(), et_pswrd.getText().toString(), et_email.getText().toString());
+                //Values entered by user passed to sql object
+                sql = new sqlConnect(-1, firstName.getText().toString(), surname.getText().toString(), username.getText().toString(), password.getText().toString(), email.getText().toString());
 
                 try {
+                    //Checks if username exists in db
                     if(returnList.toString().contains(sql.getUsername())){
-                        Toast.makeText(getActivity(), "Username " + et_usrnme.getText() + " Already Exists", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Username " + username.getText() + " Already Exists", Toast.LENGTH_SHORT).show();
                     } else {
+                        //Creates new entry as long as username doesn't exist in db
                         dbH.addOne(sql);
                         Toast.makeText(getActivity(), sql.getUsername() + " Succesfully Created!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        startActivity(intent);
                     }
                 } catch (Exception e){
                     Log.d("Error Occured = ", ""+e);
@@ -74,7 +79,7 @@ public class RegistrationFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Navigate back to LoginActivity
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
             }
         });

@@ -6,10 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.camera.video.internal.config.AudioSourceSettingsDefaultResolver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,6 +84,33 @@ public class dbHelper extends SQLiteOpenHelper {
                 String email = cursor.getString(5);
 
                 sqlConnect sql = new sqlConnect(usrID, fname, sname, usrName, "null", email);
+                returnList.add(sql);
+
+            } while (cursor.moveToNext());
+        } else { }
+        cursor.close();
+        db.close();
+        return returnList;
+    }
+
+    public List<sqlConnect> checkLogin(String Username){
+
+        List<sqlConnect> returnList = new ArrayList<>();
+        String queryString = "SELECT * FROM " + USR_TBL + " WHERE " + USRNME_FIELD + " LIKE " + "'" + Username + "'";
+
+        Log.d("QUeryError", "QUERY="+queryString);
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()){
+            //loop through results
+            do {
+                int usrID = cursor.getInt(0);
+                String usrName = cursor.getString(3);
+                String pass = cursor.getString(4);
+
+                sqlConnect sql = new sqlConnect(usrID, null, null, usrName, pass, null);
                 returnList.add(sql);
 
             } while (cursor.moveToNext());

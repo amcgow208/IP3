@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 public class sqlConnect{
 
     private int id;
-    private String firname, surname, username, email, password;
+    private String firname, surname, username, email, password, sessionUsrnme, sessionPswrd;
 
     //constructor
 
@@ -44,14 +44,14 @@ public class sqlConnect{
         this.id = id;
     }
     public String getFirname() { return firname; }
-    public String setFirname(String firname) { return firname; }
+    public void setFirname(String firname) { this.firname = firname; }
     public String getSurname() { return surname; }
-    public String setSurname(String surname) { return surname; }
+    public void setSurname(String surname) { this.surname = surname; }
     public String getUsername() { return username; }
-    public String setUsername(String username) { return username; }
+    public void setUsername(String username) { this.username = username; }
     public String getEmail( ) { return email; }
-    public String setEmail(String email) { return email; }
+    public void setEmail(String email) { this.email = email; }
     public String getPassword( ) { return password; }
-    public String setPassword(String password) { return password; }
+    public void setPassword(String password) { this.password = password; }
 
 }
