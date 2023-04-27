@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/appBackground">
+    android:background="@drawable/background_gradient">
 
     <TextView
         android:id="@+id/app_title"
@@ -15,6 +15,7 @@
         android:textStyle="bold"
         android:fontFamily="sans-serif-light"
         android:elevation="2dp" />
+
     <TextView
         android:id="@+id/copyright_symbol"
         android:layout_width="wrap_content"
@@ -28,46 +29,51 @@
         android:elevation="2dp" />
 
     <EditText
-        android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginTop="128dp"
-        android:hint="Username"
-        android:textColorHint="@color/placeholderText"
-        android:textColor="@color/inputText"
-        android:textSize="18sp"
-        android:padding="12dp"
-        android:inputType="text"
-        android:background="@drawable/edittext_background"
-        android:elevation="2dp" />
-
-    <EditText
         android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_below="@id/username"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginTop="16dp"
-        android:hint="Password"
-        android:textColorHint="@color/placeholderText"
-        android:textColor="@color/inputText"
-        android:textSize="18sp"
-        android:padding="12dp"
-        android:inputType="textPassword"
-        android:background="@drawable/edittext_background"
-        android:elevation="2dp" />
-    <Button
-        android:id="@+id/login_button"
+        android:layout_above="@+id/login_button"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         android:layout_marginBottom="16dp"
-        android:layout_alignParentBottom="true"
+        android:autofillHints="@string/password_hint"
+        android:background="@drawable/edittext_background"
+        android:elevation="2dp"
+        android:hint="@string/password_hint"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        android:textColor="@color/inputText"
+        android:textColorHint="@color/placeholderText"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_above="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="16dp"
+        android:autofillHints="@string/username_hint"
+        android:background="@drawable/edittext_background"
+        android:elevation="2dp"
+        android:hint="@string/username_hint"
+        android:inputType="text"
+        android:padding="12dp"
+        android:textColor="@color/inputText"
+        android:textColorHint="@color/placeholderText"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_above="@+id/register_button"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="16dp"
         android:text="Log in"
+        android:textAllCaps="false"
         android:textColor="@color/textColor"
         android:textSize="18sp"
         android:background="@drawable/button_background"
@@ -75,16 +81,19 @@
 
     <Button
         android:id="@+id/register_button"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_above="@id/login_button"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_background"
         android:text="Register"
+        android:textAllCaps="false"
         android:textColor="@color/textColor"
         android:textSize="18sp"
         android:elevation="2dp" />
+
+
 
 </RelativeLayout>

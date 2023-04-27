@@ -3,4 +3,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="take_photo">Take Photo</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
 </resources>
