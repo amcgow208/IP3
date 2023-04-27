@@ -5,7 +5,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/background_gradient">
 
     <EditText
@@ -14,14 +14,15 @@
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         android:layout_marginTop="96dp"
-        android:hint="First Name"
+        android:hint="@string/first_name"
         android:textSize="18sp"
         android:inputType="text"
         android:background="@drawable/edittext_background"
         android:textColor="@color/inputText"
         android:textColorHint="@color/placeholderText"
         android:layout_height="48dp"
-        android:padding="12dp" />
+        android:padding="12dp"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/surname_name"
@@ -30,14 +31,15 @@
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         android:layout_marginTop="16dp"
-        android:hint="Surname"
+        android:hint="@string/surname"
         android:textSize="18sp"
         android:inputType="text"
         android:background="@drawable/edittext_background"
         android:textColor="@color/inputText"
         android:textColorHint="@color/placeholderText"
         android:layout_height="48dp"
-        android:padding="12dp" />
+        android:padding="12dp"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/username"
@@ -46,14 +48,15 @@
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         android:layout_marginTop="16dp"
-        android:hint="Username"
+        android:hint="@string/username"
         android:textSize="18sp"
         android:inputType="text"
         android:background="@drawable/edittext_background"
         android:textColor="@color/inputText"
         android:textColorHint="@color/placeholderText"
         android:layout_height="48dp"
-        android:padding="12dp" />
+        android:padding="12dp"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/password"
@@ -62,14 +65,15 @@
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         android:layout_marginTop="16dp"
-        android:hint="Password"
+        android:hint="@string/password"
         android:textSize="18sp"
         android:inputType="textPassword"
         android:background="@drawable/edittext_background"
         android:textColor="@color/inputText"
         android:textColorHint="@color/placeholderText"
         android:layout_height="48dp"
-        android:padding="12dp" />
+        android:padding="12dp"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/email_address"
@@ -78,14 +82,15 @@
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         android:layout_marginTop="16dp"
-        android:hint="Email Address"
+        android:hint="@string/email_address"
         android:textSize="18sp"
         android:inputType="textEmailAddress"
         android:background="@drawable/edittext_background"
         android:textColor="@color/inputText"
         android:textColorHint="@color/placeholderText"
         android:layout_height="48dp"
-        android:padding="12dp" />
+        android:padding="12dp"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/sign_up"
@@ -96,7 +101,7 @@
         android:layout_marginRight="32dp"
         android:textSize="18sp"
         android:background="@drawable/button_background"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
         android:textColor="@color/textColor"
         android:textAllCaps="false"
         android:layout_height="48dp" />
@@ -110,7 +115,7 @@
         android:layout_marginRight="32dp"
         android:textSize="18sp"
         android:background="@drawable/button_background"
-        android:text="Back"
+        android:text="@string/back"
         android:textColor="@color/textColor"
         android:textAllCaps="false"
         android:layout_height="48dp" />

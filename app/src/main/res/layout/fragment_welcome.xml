@@ -1,47 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <Button
-        android:id="@+id/camera_button"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layout_alignParentBottom="true"
-        android:text="Camera"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:background="@drawable/button_background" />
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
+    android:paddingLeft="32dp"
+    android:paddingRight="32dp">
 
     <LinearLayout
+        android:id="@+id/bottom_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/camera_button"
-        android:layout_marginBottom="16dp"
+        android:layout_alignParentBottom="true"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingBottom="16dp">
 
         <Button
             android:id="@+id/recipes_button"
             android:layout_width="0dp"
-            android:layout_height="64dp"
-            android:layout_weight="0.4"
-            android:layout_marginRight="8dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
             android:text="Recipes"
-            android:textColor="@color/black"
+            android:textColor="@color/textColor"
             android:textSize="18sp"
-            android:background="@drawable/button_background" />
+            android:background="@drawable/button_background"
+            android:textAllCaps="false" />
 
         <Button
             android:id="@+id/pantry_button"
             android:layout_width="0dp"
-            android:layout_height="64dp"
-            android:layout_weight="0.4"
-            android:layout_marginLeft="8dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
             android:text="Pantry"
-            android:textColor="@color/black"
+            android:textColor="@color/textColor"
             android:textSize="18sp"
-            android:background="@drawable/button_background" />
+            android:background="@drawable/button_background"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/camera_button"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Camera"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            android:background="@drawable/button_background"
+            android:textAllCaps="false" />
 
     </LinearLayout>
 
